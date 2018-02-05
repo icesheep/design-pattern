@@ -4,9 +4,19 @@ public class Singleton {
 
 	private Singleton(){};
 	
-	private static final Singleton singelton = new Singleton();
+	private volatile static Singleton singelton;
 	
 	public static Singleton getSingleton() {
+		return singelton;
+	}
+	public static Singleton doubleCheckGetSingleton() {
+		if(singelton == null) {
+			synchronized (Singleton.class) {
+				if(singelton == null) {
+					singelton = new Singleton();
+				}
+			}
+		}
 		return singelton;
 	}
 }

@@ -1,5 +1,4 @@
 package prototype;
-
 import java.util.Hashtable;
 
 public class ShapeCache {
